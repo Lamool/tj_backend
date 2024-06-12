@@ -151,6 +151,7 @@ public class Step3 {
 
 
 
+
         // 문제16 : 3개의 정수형으로 입력받아 가장 큰수 출력
         System.out.print("정수1 입력 : ");
         int 정수1 = scanner.nextInt();

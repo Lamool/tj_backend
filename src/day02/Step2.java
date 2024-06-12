@@ -1,8 +1,8 @@
 package day02;
 
-public class Step2 {
+public class Step2 {        // class s
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {        // main s
 
         // 형 변환 : 자료형 변경
         // 1. 묵시적/자동 형 변환 :
@@ -57,11 +57,12 @@ public class Step2 {
         // 2. 명시적/강제 형 변환
             // 1. 메모리 크기가 큰 것부터 작은 순으로 변환
             // 2. 데이터 손실이 있을 수도 있다.
+            // (변환할자료형)변수명
             // byte <- short <- int <- long <- float <- double
         
         int intValue2 = 10;
-        // byte byteValue2 = intValue2;        // 오류 : 4바이트를 1바이트에 저장할 수가 없어
-        byte byteValue2 = (byte)intValue2;
+        // byte byteValue2 = intValue2;         // 오류 : 4바이트를 1바이트에 저장할 수가 없어
+        byte byteValue2 = (byte)intValue2;      // 강제형변환
         System.out.println("byteValue2 = " + byteValue2);
         
         long longValue2 = 300;
@@ -87,6 +88,9 @@ public class Step2 {
         
         
         // p.69 연습문제
+        // 1. 예
+        // 2. 아니요 [ 자동x 강제o ]
+        // 3. 부동소수점
         // 4.
         int value1 = 10;
         double value2 = 2.0;        
@@ -95,8 +99,11 @@ public class Step2 {
             // 2. int = double (오류)
             //  - int = (int)double
         System.out.println("result = " + result);
+        // 5.
+        char char1 = '글';
+        System.out.println("char1 = " + char1);
         
         
-    }
+    }       // main e
 
-}
+}       // class e

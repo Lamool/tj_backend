@@ -1,9 +1,9 @@
-package day03;      // 현재 클래스 파일이 위치한 패키지
+package day03;      // 현재 클래스 파일이 위치한 패키지/폴더명
 
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
-public class Step1 {    // class s
+public class  Step1 {    // class s
 
     // main + 엔터
     // main : 코드를 읽어/실행 주는 역할 (스레드)
