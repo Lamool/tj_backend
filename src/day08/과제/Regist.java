@@ -1,5 +1,7 @@
 package day08.과제;
 
+import java.util.Scanner;
+
 public class Regist {
     public static void main(String[] args) {
         SoccerManage p1=new SoccerManage();
