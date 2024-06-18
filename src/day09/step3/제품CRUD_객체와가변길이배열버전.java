@@ -2,12 +2,13 @@ package day09.step3;
 
 import java.util.Scanner;
 
-public class 제품CRUD_객체와배열버전 {
+public class 제품CRUD_객체와가변길이배열버전 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         // 제품 메모리 설계
-        제품[] product = new 제품[3]; // [null][null][null]
+        int count = 0;
+        제품[] product = new 제품[count]; // [null][null][null] // 201번지 -- > 301번지
 
         while(true) {   // 무한반복
             System.out.print("1. 등록(C) 2. 출력(R) 3. 수정(U) 4. 삭제(D) 5. 종료 선택 >> ");  // 무한출력
@@ -23,19 +24,16 @@ public class 제품CRUD_객체와배열버전 {
                 System.out.print("제품가격 : ");
                 int price = scanner.nextInt();
 
-                boolean createCheck = false;
+                count++;
 
+                제품[] productCopy = new 제품[count]; // 301번지
                 for (int i = 0; i < product.length; i++) {
-                    if (product[i] == null) {
-                        product[i] = new 제품(code, name, price);
-                        createCheck = true;
-                        break;
-                    }
+                    productCopy[i] = product[i];
                 }
 
-                if (createCheck == false) {
-                    System.out.println("[경고] 제품등록 자리가 부족합니다.");
-                }
+                product = productCopy;
+
+                product[count-1] = new 제품(code, name, price);
 
             } else if (ch == 2) {
                 System.out.println("========== 제품목록 ==========");
