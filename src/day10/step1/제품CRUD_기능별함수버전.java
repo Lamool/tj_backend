@@ -1,9 +1,10 @@
-package day09.step3;
+package day10.step1;
 
-import java.util.Arrays;
+import day09.step3.제품;
+
 import java.util.Scanner;
 
-public class 제품CRUD_객체와가변길이배열버전 {
+public class 제품CRUD_기능별함수버전 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -30,13 +31,9 @@ public class 제품CRUD_객체와가변길이배열버전 {
                 제품[] productCopy = new 제품[count]; // 301번지
                 for (int i = 0; i < product.length; i++) {
                     productCopy[i] = product[i];
-
-
-                    // 각각의 요소들도 사실 주소를 갖고 있었디.
-                    // 그 각각도 주소를 준 것
                 }
 
-                product = productCopy;      // 값을 주는 게 아니라 주소를 주는 거다.
+                product = productCopy;
 
                 product[count-1] = new 제품(code, name, price);
 
@@ -106,3 +103,22 @@ public class 제품CRUD_객체와가변길이배열버전 {
     }   // main end
 
 }   // class end
+
+/*
+
+    5. 제품CRUD_기능별함수버전
+    - [메모리 설계] 외 모든 조건이 동일합니다.
+    [ 메모리 설계 ]
+        - 최대 제품 개수는 [!!!]제한없음
+        - 제품의 속성은 제품코드 , 제품명 , 제품가격 3개
+        - 배열은 1개 선언 가능 합니다.
+        - 제품 클래스를 선언하고 객체를 활용 하시오.
+        - 제품 등록시 제품객체는 생성되므로 while문 밖에 미리 배열내 객체를 임의로 생성하지 마시오.
+        - 반복문을 최대한 활용하여 코드을 줄이시오.
+        - 제품 클래스의 모든 멤버변수는 private 사용 합니다.
+        - 제품 객체 생성시 매개변수가 3개인 생성자를 활용 합니다.
+        [추가]
+        - main 함수내 1,2,3,4 입력시 실행되는 실행문들을 함수로 구현하여
+            함수 호출를 호출하는 방식으로 기능별로 함수화 를 하시오.
+
+*/
