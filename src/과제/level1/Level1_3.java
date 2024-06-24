@@ -6,16 +6,12 @@ import java.util.Scanner;
 public class Level1_3 {
     public static void main(String[] args) {
         System.out.println(" >> Level1_3 answer >> ");
-
-        // 현재 날짜/시간
-        LocalDateTime answer = LocalDateTime.now();
-        System.out.println(" >> answer time : "+ answer + " >> \n");
+        System.out.println(" >> answer time : " + LocalDateTime.now() +" >> \n" );
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("input boolean : ");
         boolean bool1 = scanner.nextBoolean();
-
 
         System.out.print("input byte : ");
         byte byteNum = scanner.nextByte();
@@ -38,14 +34,14 @@ public class Level1_3 {
         System.out.print("input double : ");
         double doubleNum = scanner.nextDouble();
 
-        System.out.println("output boolean : " + bool1);
-        System.out.println("output byte : " + byteNum);
-        System.out.println("output char : " + ch);
-        System.out.println("output short : " + shortNum);
-        System.out.println("output int : " + intNum);
-        System.out.println("output long : " + longNum);
-        System.out.println("output float : " + floatNum);
-        System.out.println("output double : " + doubleNum);
+        System.out.print("output boolean : " + bool1 + "\n");
+        System.out.print("output byte : " + byteNum + "\n");
+        System.out.print("output char : " + ch + "\n");
+        System.out.print("output short : " + shortNum + "\n");
+        System.out.print("output int : " + intNum + "\n");
+        System.out.print("output long : " + longNum + "\n");
+        System.out.print("output float : " + floatNum + "\n");
+        System.out.print("output double : " + doubleNum + "\n");
 
     }
 

@@ -10,16 +10,17 @@ public class Level1_5 {
         long value4 = 40000000000L;
         float value5 = 3.123123123F;
 
+        short num1 = value1;
+        int num2 = value2;
+        long num3 = value3;
+        float num4 = value4;
+        double num5 = value5;
 
-        double dd = value4;
-
-        System.out.println("byte -> short : ");
-        System.out.println("short -> int : ");
-        System.out.println("int -> long : ");
-        System.out.println("long -> float : ");
-        System.out.println("float -> double : " + dd);
-
-
+        System.out.println("byte -> short : " + num1);
+        System.out.println("short -> int : " + num2);
+        System.out.println("int -> long : " + num3);
+        System.out.println("long -> float : " + num4);
+        System.out.println("float -> double : " + num5);
 
     }
 

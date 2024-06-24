@@ -5,10 +5,7 @@ import java.time.LocalDateTime;
 public class Level3_1 {
     public static void main(String[] args) {
         System.out.println(" >> Level3_1 answer >> ");
-
-        // 현재 날짜/시간
-        LocalDateTime answer = LocalDateTime.now();
-        System.out.println(" >> answer time : "+ answer + " >> \n");
+        System.out.println(" >> answer time : " + LocalDateTime.now() +" >> \n" );
 
 
         System.out.println("안녕하세요1");
