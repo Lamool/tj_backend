@@ -11,8 +11,9 @@ public class Step2 {        // class s
             // 1. Scanner 클래스 [입력시 자동완성(ctrl + 스페이스바) 권장]
                 // - import java.util.Scanner; 자동완성시 자동코드 추가, 아니면 직접입력 해야됩니다
                 // - 현재 클래스 외 다른 패키지로부터 해당 클래스를 가져오기
-        // {} 내 한 번만(?)
+                // {} 내 한 번만 생성
         Scanner scanner = new Scanner(System.in);
+
         // 2. 입력받고 변수에 저장
         System.out.print("작성자 : ");
         String 작성자 = scanner.next();
