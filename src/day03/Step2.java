@@ -28,12 +28,12 @@ public class Step2 {        // class s
         // 3. 출력 println vs print vs printf
         System.out.printf(">> 작성자 : %s \t 나이 : %3d \n", 작성자, 나이);
         System.out.printf(">> 방문록 : %s \n", 방문록);
-
+            // VS
         System.out.println(">> 작성자 : " + "작성자" + " \t 나이 : " + 나이);
         System.out.println(">> 방문록 : " + 방문록);
 
 
-
+        System.out.println("--------------------------------------------------");
         // 예제2 : 기본급과 수당을 정수로 입력받아 실수령액 계산해서 출력
             // 실수령액 계산식 : 기본급 + 수당 - 세금[기본금액의 10%]
 
@@ -44,8 +44,8 @@ public class Step2 {        // class s
         System.out.print("수당 : ");
         int 수당 = scanner.nextInt();
 
-        // 2. 계산
-        int 실수령액 = 기본급 + 수당 - (int)(기본급 * 0.1);     // 기본급(int) * 0.1(double)
+        // 2. 계산 , 강제형변환 생각!!
+        int 실수령액 = 기본급 + 수당 - (int)(기본급 * 0.1);     // 기본급(int) * 0.1(double) => double
 
         // 3
         System.out.println("실수령액 = " + 실수령액);

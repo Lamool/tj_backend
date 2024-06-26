@@ -27,6 +27,7 @@ public class Step3 {
 
 
         // 문제3 : 하나의 정수형으로 입력받아 7의 배수 이면서 짝수 이면 'O' 아니면 'X' 출력 하시오.
+            // && : 이면서 면서 이고 그리고 모두
         System.out.print("정수를 입력하세요 : ");
         int num3 = scanner.nextInt();
         System.out.println((num3 % 7 == 0 && num3 % 2 == 0) ? "O" : "X");
@@ -60,6 +61,7 @@ public class Step3 {
 
         // 문제7 : 실수형으로 두번 입력받아 앞 실수의 값이 뒤의 값의 몇% 인지 소수점 첫째 자리까지 출력하시오.
         //      예) 54.5   84.3 실수 2개입력시 결과는   64.285714%
+        //      printf() 에서 % 출력시 %%
         System.out.print("실수1 : ");
         double value1 = scanner.nextDouble();
         System.out.print("실수2 : ");
@@ -77,7 +79,8 @@ public class Step3 {
         int bottom = scanner.nextInt();
         System.out.print("높이 : ");
         int height = scanner.nextInt();
-        double sd = (top + bottom);
+        double result8 = (top + bottom) * height / 2.0;
+        System.out.printf("넓이 : %.1f\n", result8);
 
 
 
@@ -85,8 +88,8 @@ public class Step3 {
         // 계산식) 표준체중 계산식 = > (키 - 100) * 0.9
         System.out.print("키 입력 : ");
         int cm9 = scanner.nextInt();
-        double cmp = (cm9 - 100) * 0.9;
-        System.out.printf("%.0f", cmp);
+        int weight9 = (cm9 - 100) * 9 / 10;
+        System.out.printf("표준체중 : %dkg\n", weight9);
 
 
 
@@ -97,7 +100,7 @@ public class Step3 {
         System.out.print("몸무게 입력 : ");
         double weight10 = scanner.nextDouble();
         double bmi = weight10 / ((cm10 / 100) * (cm10 / 100));
-        System.out.printf("%.2f", bmi);
+        System.out.printf("BMI : %.2f\n", bmi);
 
 
 
@@ -106,7 +109,7 @@ public class Step3 {
         System.out.print("cm로 변환할 inch를 입력 : ");
         double inch = scanner.nextDouble();
         double cm = inch * 2.54;
-        System.out.printf("%.2f", cm);
+        System.out.printf("%.2f\n", cm);
 
 
 //        System.out.print("cm로 변환할 inch를 입력하세요 : ");
@@ -125,14 +128,14 @@ public class Step3 {
         System.out.print("수행평가 점수 : ");
         int testScore = scanner.nextInt();
         double score = midScore * 0.3 + finalScore * 0.3 + testScore * 0.4;
-        System.out.printf("%.2f", score);
+        System.out.printf("%.2f\n", score);
 
 
 
         // 문제13 :  연산 순서 나열 하고 printf() 에 출력되는 x 와 y 값을 예측하시오.
         int x = 10;
         int y = x-- + 5 + --x;
-        System.out.printf(" x의 값 : %d , y의값 :  %d ", x, y);
+        System.out.printf(" x의 값 : %d , y의값 : %d \n", x, y);
         // x = 8, y = 23
         // 1. x-- + 5   -> x = 10 + 5 => 15     [x는 + 연산후 1차감]
         // 2. 15 + --x  -> x = 8 + 15 => 23     [x는 + 연산전 1차감]
@@ -142,13 +145,22 @@ public class Step3 {
         // 문제14 : 나이를 입력받아 나이가 10세이상이면 학생 , 20세이상이면 성인 , 40세이상이면 중년 으로 출력하기
         System.out.print("나이 : ");
         int age = scanner.nextInt();
-        System.out.println(age >= 40 ? "중년" : age >= 20 ? "성인" : "학생");
-
+        System.out.println( age >= 40 ? "중년" : age >= 20 ? "성인" : age >= 10 ? "학생" : "");
+        // System.out.println( 나이>=10?"학생":나이>=20?"성인":나이>=40?"중년":""); // 코드오류는 아니지만 조건상의 문제발생
 
 
         // 문제15 : 국어 , 영어 , 수학 점수를 입력받아 각 변수에 저장하고 총점(소수점 0자리) 출력 , 평균(소수점 2자리 까지) 출력
+        System.out.print("국어 점수를 입력하세요 : ");
+        int kScore = scanner.nextInt();
+        System.out.print("영어 점수를 입력하세요 : ");
+        int eScore = scanner.nextInt();
+        System.out.print("수학 점수를 입력하세요 : ");
+        int mScore = scanner.nextInt();
 
-
+        double totScore = (double) (kScore + eScore + mScore);
+        System.out.printf("총점: %.0f\n", totScore);    // 총점(소수점 0자리)
+        double avrScore = totScore / 3;
+        System.out.printf("평균: %.2f\n", avrScore);    // 평균(소수점 2자리)
 
 
 

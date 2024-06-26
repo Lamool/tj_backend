@@ -49,13 +49,11 @@ public class Step3 {
                 } else if (ch == 3) {
                     System.out.print("[수정U] 기존이름 : ");
                     String oldName = scan.next();
-
                     System.out.print("[수정U] 새로운이름 : ");
                     String newName = scan.next();
 
                     // 2. DB SQL 레코드 수정 : update table1 set name = '신동엽2' where name='신동엽';
-                    String sql = "update table1 set name = '" + newName + "' where name='" + oldName + "'";
-                    System.out.println("sql : " + sql);
+                    String sql = "update table1 set name = '" + newName + "' where name='" + oldName + "'";         System.out.println("sql : " + sql);
 
                     PreparedStatement ps = conn.prepareStatement(sql);
                     ps.executeUpdate();
