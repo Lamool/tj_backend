@@ -9,6 +9,7 @@ public class Level3_2 {
         System.out.println(" >> answer time : " + LocalDateTime.now() +" >> \n" );
 
         Scanner scanner = new Scanner(System.in);
+
         int count = 1;
         String input = "";
 
@@ -17,13 +18,13 @@ public class Level3_2 {
             input = scanner.next();
 
             if (input.equals("end")) {
+                System.out.println("안내) 프로그램 종료 합니다.[총 " + --count + "회 입력]");
                 break;
             }
 
             count++;
         }
 
-        System.out.println("안내) 프로그램 종료 합니다.[총 " + --count + "회 입력]");
     }
 
 }

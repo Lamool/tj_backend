@@ -7,10 +7,10 @@ public class Level3_3 {
         System.out.println(" >> Level3_3 answer >> ");
         System.out.println(" >> answer time : " + LocalDateTime.now() +" >> \n" );
 
-        int july1 = 353;
-        int july2 = 912;
-        int july3 = 518;
-        int july4 = 1173;
+        int july1 = 3532100;
+        int july2 = 9123700;
+        int july3 = 5183400;
+        int july4 = 11738700;
         int count = 0;
 
         System.out.println(" -------- 7월 매출액 -------- ");
@@ -19,13 +19,17 @@ public class Level3_3 {
             System.out.print(i + "주차 : ");
 
             if (i == 1) {
-                count = july1 / 100;
+                count = july1 / 1000000;
+                july1 /= 10000;
             } else if (i == 2) {
-                count = july2 / 100;
+                count = july2 / 1000000;
+                july2 /= 10000;
             } else if (i == 3) {
-                count = july3 / 100;
+                count = july3 / 1000000;
+                july3 /= 10000;
             } else if (i == 4) {
-                count = july4 / 100;
+                count = july4 / 1000000;
+                july4 /= 10000;
             }
 
             while (count > 0) {
