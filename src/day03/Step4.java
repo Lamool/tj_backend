@@ -38,9 +38,9 @@ public class Step4 {
 
         System.out.print("정수 1 : ");
         int number1 = scan.nextInt();
-
         System.out.print("정수 2 : ");
         int number2 = scan.nextInt();
+
         // 정수 1과 정수 2 값이 같을 때 정수 2 값을 다시 입력하도록 하는 코드
         if (number1 == number2) {
             System.out.println("서로 다른 정수값을 입력해야 합니다.");
@@ -64,8 +64,11 @@ public class Step4 {
 
 
         // 문제4 : 각 3개의 정수형으로 수를 입력받아 오름차순 순서대로 출력하시오. [ 전제조건 : 각 정수는 서로 다른 정수값 ]
+        System.out.print("정수 1 : ");
         int q4a = scan.nextInt();
+        System.out.print("정수 2 : ");
         int q4b = scan.nextInt();
+        System.out.print("정수 3 : ");
         int q4c = scan.nextInt();
 
         // 오름차순 : 1, 2, 3
@@ -97,11 +100,14 @@ public class Step4 {
         // [입력 조건] 플레이어1 과 플레이어2 에게 각각 입력을 받습니다.
         // [출력 조건] 플레이어1 이기면 ' 플레이어1 승리 ', 플레이어2 이기면 ' 플레이어2 승리 ' 무승부 이면 '무승부' 출력 하시오.
         System.out.println("가위: 0, 바위: 1, 보: 2");
+
         System.out.print("플레이어1 입력: ");
         int player1 = scan.nextInt();
         System.out.print("플레이어2 입력: ");
         int player2 = scan.nextInt();
+
         int result = player1 - player2;
+
         if (result == 0) {
             System.out.println("무승부");
         } else if (result == 1 || result == -2) {
@@ -146,17 +152,19 @@ public class Step4 {
             // - 단 입차 시간 이전 으로 입력 할 경우에는 '출차시간 오류' 출력하시오.
         int inHour = 9;
         int inMinute = 30;
+
         System.out.println(">> 출차시간_시간 : ");
         int outHour = scan.nextInt();
         System.out.println(">> 출차시간_분 : ");
         int outMinute = scan.nextInt();
+
         int passedTime = (outHour*60 + outMinute) - (inHour*60 + inMinute);
+
         if (passedTime < 0) {
             System.out.println("출차시간 오류");
         } else {
             System.out.printf("\n사용요금 %4d원", passedTime * 1000);
         }
-
 
 
 
@@ -180,7 +188,6 @@ public class Step4 {
         } else {
             System.out.println("아이디 정보가 일치하지 않습니다.");
         }
-
 
 
 
