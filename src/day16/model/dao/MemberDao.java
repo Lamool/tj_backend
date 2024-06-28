@@ -1,14 +1,17 @@
-package day16.model.dao;
+package day16.model.dao;            // 현재 클래스 파일이 위치한 폴더/패키지명 // 클래스 생성시 자동으로 할당된다
 
-import day16.model.dto.MemberDto;
+import day16.model.dto.MemberDto;           // 다른 패키지에 속한 MemberDto 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.Connection;                 // 데이터베이스 서버에 연결하고, SQL 문을 실행하며, 트랜잭션을 관리하는 Connection 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
+import java.sql.DriverManager;              // JDBC 드라이버를 등록하고, 데이터베이스와의 연결을 설정하는 DriverManager 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
+import java.sql.PreparedStatement;          //
+import java.sql.ResultSet;                  //
 
-public class MemberDao {
+public class MemberDao {            // MemberDao 클래스 선언
     // 0.
+    // 접근제한자를 안 붙이면 기본이 default인데, default면 패키지 다른 경우 오류가 나서 public을 붙여주었다.
+    // 해당 클래스의 함수들을 다른 클래스에서 호출 할 수 있도록 static도 써주었다.
+    // MemberDao 클래스의 생성자를 호출하여 객체를 생성한 뒤 주소값을 mdao에 저장해준다
     public static MemberDao mdao = new MemberDao();
 
     // 0. DB연동
@@ -51,8 +54,8 @@ public class MemberDao {
         return false;           // 5. 메소드 반환
     }
 
-    // 2. 로그인 함수, 매개변수 : MemberDto(아이디, 비밀번호), 리턴값 : boolean (성공 / 실패)
-    public boolean login(MemberDto memberDto) {
+    // 2. 로그인 함수, 매개변수 : MemberDto(아이디, 비밀번호), 리턴값 : 로그인 성공한 회원번호 반환
+    public int login(MemberDto memberDto) {
         try {
             // 1. SQL 작성한다
             String sql = "SELECT * FROM member where mid = ? and mpwd = ?;";
@@ -64,15 +67,15 @@ public class MemberDao {
             // 4. 실행
             rs = ps.executeQuery();     // 5. 쿼리 실행 후 결과를 rs로 받는다.
             // 6. 다음 레코드 : 로그인 성공시 레코드 1개, 로그인 실패시 레코드 0개
-            if (rs.next()) {   // 다음 레코드가 1개라도 존재하면 로그인 성공
-                return true;
+            if (rs.next()) {   // 다음 레코드가 1개라도 존재하면 회원번호 반환
+                return rs.getInt("mno");
             }
 
             // return rs.next(); 이렇게 해도 됨
         } catch (Exception e) {
             System.out.println(e);
         }
-        return false;
+        return 0;   // 0을 반환하게 되면 로그인 실패
     }
 
     // 3. 아이디찾기 함수, 매개변수 : MemberDto(이름, 전화번호), 리턴값 : String (찾은 아이디 / null) - 찾았으면 문자열이 들어있고 못찾았으면 null 대입
@@ -119,5 +122,45 @@ public class MemberDao {
 
     }
 
-    // 아이디중복검사
+    // 5. 회원탈퇴 함수
+    public boolean mDelete(String confirmPwd, int loginMno) {
+        try {
+            String sql = "delete from member where mno = ? and mpwd = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, loginMno);
+            ps.setString(2, confirmPwd);
+
+            int count = ps.executeUpdate();
+            if (count == 1) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return false;
+
+    }
+
+    // 2. 회원수정 함수
+    public boolean mUpdate(MemberDto memberDto) {
+        try {
+            String sql = "update member set mname = ?, mphone = ? where mno = ?;";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, memberDto.getMname());
+            ps.setString(2, memberDto.getMphone());
+            ps.setInt(3, memberDto.getMno());
+            int count = ps.executeUpdate();
+            if (count == 1) {
+                return true;
+            }
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return false;
+
+    }
+
 }
