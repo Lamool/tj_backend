@@ -13,7 +13,7 @@ class 상위클래스 {
 }
 
 class 하위클래스 extends 상위클래스 {
-    protected int value1;
+    protected int value1;       // 하위클래스와 상위클래스내 멤버변수명이 동일하다.
     protected int value2;
 
     public 하위클래스() {

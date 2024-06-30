@@ -1,6 +1,6 @@
 package day10.step1;
 
-import day09.step3.제품;
+import day09.step6.제품;
 
 import java.util.Scanner;
 

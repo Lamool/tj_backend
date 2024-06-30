@@ -8,6 +8,7 @@ public class 제품 {
     // 2. 생성자
 
     // 3. 메소드/함수
+        // 일반 메소드
     void 구매함수() {
         System.out.println("제품구매");
     }

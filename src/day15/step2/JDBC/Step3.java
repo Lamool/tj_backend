@@ -12,12 +12,12 @@ public class Step3 {
         // DB연동
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/day05", "root", "1234");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/day05", "root", "1234");        // DB연동
         } catch (Exception e) {
             System.out.println(">> 연동 실패 : " + e);
         }
 
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);      //입력객체
         // ArrayList<String> nameList = new ArrayList<>();     // 여러 개 String 객체(문자열)를 저장하는 리스트 객체      -> 여기서 쓸 이유가 없다. 어차피 다시 실행하면 리스트에 넣은 값들이 사라지니까
 
         while (true) {
@@ -77,8 +77,8 @@ public class Step3 {
             } catch (SQLException e) {
                 System.out.println(" >> SQL 구문이 틀렸습니다." + e);
             }
-        }
+        }   // while end
 
-    }
+    }   // m end
 
-}
+}   // class end

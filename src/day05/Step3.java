@@ -9,9 +9,8 @@ public class Step3 {
         Scanner scanner = new Scanner(System.in);
 /*
         // [1] 입력받은 수만큼 별 출력
-            // 1. 키보드로부터 정수형으로 입력받아 정수형 변수에 저장
         System.out.print("[1]별 개수 : ");
-
+            // 1. 키보드로부터 정수형으로 입력받아 정수형 변수에 저장
         int star1 = scanner.nextInt();
         System.out.println("> star1 = " + star1);
 
@@ -28,6 +27,7 @@ public class Step3 {
         int star2 = scanner.nextInt();      // scanner 객체 생성은 { } 마다 1번 선언
         System.out.println("> star2 = " + star2);
 
+        // 2. 입력받은 수 만큼 '*' 출력 만약에 3의 배수이면 줄바꿈처리
         for (int i = 1; i <= star2; i++) {
             System.out.print("*");
 
@@ -130,6 +130,7 @@ public class Step3 {
         }
 
 
+
         // [8] 입력받은 줄 만큼 아래와 같이 출력하시오.
         //     *
         //    ***
@@ -149,6 +150,7 @@ public class Step3 {
         }
 
 
+
         // [9] 입력받은 줄 만큼 아래와 같이 출력하시오.
         //  *******
         //   *****
@@ -166,6 +168,7 @@ public class Step3 {
 
             System.out.println();
         }
+
 
 
         // [10] 입력받은 줄 만큼 아래와 같이 출력하시오.
@@ -200,7 +203,6 @@ public class Step3 {
 
 
 
-
         System.out.print("[10] 줄 수 입력 : ");
         int star10 = scanner.nextInt();
         for (int i = 1; i <= star10; i++) {
@@ -222,7 +224,6 @@ public class Step3 {
 
             System.out.println();
         }
-
 
 
 

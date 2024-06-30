@@ -1,4 +1,4 @@
-package day09.step3;
+package day09.step4;
 
 import java.util.Scanner;
 

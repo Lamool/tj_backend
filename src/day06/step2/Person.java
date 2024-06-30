@@ -2,9 +2,9 @@ package day06.step2;
 
 public class Person {
     // 멤버변수/필드
-    String name;
-    int height;
-    double wight;
-    char gender;
-    boolean married;
+    String name;        // 이름
+    int height;         // 키
+    double wight;       // 몸무게
+    char gender;        // 성별
+    boolean married;    // 결혼 여부
 }

@@ -1,6 +1,6 @@
 package day14.step2;
 
-// implements
+// implements : 구현하다.
 public class ImplementClass implements StepInterface {
     @Override   // 오버라이딩
     public void method1(int a) {

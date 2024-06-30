@@ -12,5 +12,8 @@ public class VIPCustomer extends Customer {
         bonusRatio = 0.05;
         saleRatio = 0.1;
     }
+    public int getAgentID(){
+        return agentID;
+    }
 
 }

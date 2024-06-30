@@ -16,7 +16,6 @@ public class Student2 {
     }
 
     // 메소드
-
     public String getStudentName() {
         return studentName;
     }

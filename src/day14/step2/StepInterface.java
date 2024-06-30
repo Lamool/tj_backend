@@ -8,7 +8,7 @@ public interface StepInterface {
                                 // public static final이 기본적으로 들어가 생략 가능
 
 
-    // 2. 추상메소드                 (: 구현하지 않은 것을 추상메소드라고 함)
+    // 2. 추상메소드 : abstract        (: 구현하지 않은 것을 추상메소드라고 함)
     abstract void method1(int a);
     int method2(String a);          // (abstract가 추상이라는 뜻을 갖고 있다. 생략 가능)
 

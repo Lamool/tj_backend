@@ -67,13 +67,6 @@ public class Step3 {
         cart2.move();
         cart2.put();
 
-
-
-
-
-
-
-
     }
 
 }

@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Step6 {
     /*
-
         실습 [ step6 패키지 ]
             [ 요구사항 ]
             1. 기능이 무한적으로 반복되도록 구현
@@ -21,10 +20,7 @@ public class Step6 {
                     - number : 계좌번호
                 Stemp6 클래스
                     - main함수
-
     */
-
-
     //print 많이 찍기
 
 
@@ -67,7 +63,8 @@ public class Step6 {
                 System.out.println(myAccount.getBalance());
             } // 만약에 내가 입력한 값이 3 이면 잔고확인처리
             else if( ch==4 ){
-                System.out.println("종료"); break;
+                System.out.println("종료");
+                break;
             } // 만약에 내가 입력한 값이 4 이면 종료
             else{
                 System.out.println("알수없는 번호 입니다.");

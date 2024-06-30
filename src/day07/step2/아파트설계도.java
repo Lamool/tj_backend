@@ -13,7 +13,7 @@ public class 아파트설계도 {
     }
     // 메소드
     // getter
-    public String 음식꺼내기( String 입력된패스워드){
+    public String 음식꺼내기(String 입력된패스워드){
         System.out.println( this.냉장고 );         // 이 this는 함수 호출했었던 그 객체 변수명 그걸 가리키는 것이다?
         if( 입력된패스워드.equals( this.패스워드) ){
             return 냉장고;

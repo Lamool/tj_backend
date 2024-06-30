@@ -1,4 +1,4 @@
-package day09.step3;
+package day09.step6;
 
 public class 제품 {
     private String productCode;

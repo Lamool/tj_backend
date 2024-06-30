@@ -66,4 +66,7 @@ public class SoccerManage {
     }
 
 
+    public void showList(){
+        System.out.println(고유식별번호+", "+이름+", "+나이+", "+선호포지션+", "+소속팀);
+    }
 }

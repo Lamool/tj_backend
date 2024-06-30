@@ -40,6 +40,9 @@ public class Step5 {
 
         myCar.tire = new HankookTire();
         myCar.run();
+
+        myCar.tire = new KumhoTire();
+        myCar.run();
         yourCar.run();
 
         System.out.println(myCar.tire instanceof KumhoTire);

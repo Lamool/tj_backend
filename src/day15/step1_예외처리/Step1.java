@@ -21,7 +21,6 @@ public class Step1 {
 
         // [2] 실행 예외 : 발생 할 수도 있고 안 할 수도 있고. (방지)
         try {
-            // ======== 예외가 발생 할 것 같은 ======== //
             String str1 = "ThisIsJava";
             System.out.println(str1.length());      // 10, 문자열.length() : 문자열길이
 
@@ -75,15 +74,17 @@ public class Step1 {
             System.out.println(intArray[3]);
 
             Scanner scanner = new Scanner(System.in);
-            int ch = scanner.nextInt();
+            int ch = scanner.nextInt();     // 만약에 문자 입력시 예외발생 : java.util.InputMismatchException
         } catch (NumberFormatException e) {
-            System.out.println(e);
+            System.out.println("숫자형으로 변환할수 없어");
+        } catch ( ArrayIndexOutOfBoundsException e ) {
+            System.out.println("없는 인덱스 입니다.");
         } catch (InputMismatchException e) {
-            System.out.println(e);
+            System.out.println("잘못된 입력이야.");
         } catch (Exception e) {
-            System.out.println();
+            System.out.println("알수 없는 예외가 발생했습니다. 추후에 보수 예정 " + e);
         } finally {
-            System.out.println("여기는 예외가 있던 말던 무조건 실행되는 구역");
+            System.out.println("여기는 예외가 있든 말든 무조건 실행되는 구역");
         }
 
 

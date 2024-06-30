@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class Step2 {
     public static void main(String[] args) {
+
+        // [1]
         int[] array1 = new int[3];
         array1[0] = 30;
         //array1[1] = "유재석";   // 타입이 다르므로 오류
@@ -15,7 +17,7 @@ public class Step2 {
 
         // [2]
         Book[] library = new Book[5];
-            // library = [null] [ ] [ ] [ ] [ ]
+            // library = [null] [null] [null] [null] [null]
         for (int i = 0; i < library.length; i++) {
             System.out.println(library[i]);
             // 객체가 null일 때 .(도트/접근) 사용 불가능

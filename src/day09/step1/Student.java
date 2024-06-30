@@ -16,15 +16,15 @@ public class Student {
         // 기본/디폴트 생성자는 클래스내 생성자 정의가 1개라도 존재하지 않을 때 자동생성
         // 생성자는 메소드와 동일하지만 반환/리턴 값이 없고 호출방법이 다르다.
         // this : 1. 매개변수명과 멤버변수명이 동일할 때 멤버변수의 식별용
-               // 2. 현재 메소드/생성자를 호출한
+               // 2. 현재 메소드/생성자를 호출한 주체(객체)자
     public Student(String studentName, int money) {
         this.studentName = studentName;
         this.money = money;
     }
     // 3. 메소드 : 객체들간의 상호작용/협력, 행위/행동
         // 해당 주체(학생)가 요금(학생에 포함)을 내고 버스(수입에 요금 지출)를 탄다
-    public void takeBus(Bus bus) {
-        bus.take(1000);
+    public void takeBus(Bus bus) {      // Bus타입 아직 정의하지 않았기때문에 빨간줄.
+        bus.take(1000);           // bus에 1000을 대입한다.
         this.money -= 1000;
     }
 

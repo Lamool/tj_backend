@@ -9,11 +9,11 @@ public class BookShelf extends Shelf implements Queue {
 
     @Override
     public String deQueue() {
-        return "";
+        return super.shelf.remove( 0 );
     }
 
     @Override
     public int getSize() {
-        return 0;
+        return super.getCount();
     }
 }

@@ -21,12 +21,14 @@ public class Step1 {
         studentTomas.takeSubway(subwayGreen);
         System.out.println(studentTomas);
         System.out.println(subwayGreen);
+
+        // [4] 180p. Edward 학생이 늦잠을 자서 택시를 타고 학교에 가게 되었습니다. 택시 요금은 10,000원을 지불했습니다. 이과정을 구현하시오.
+        Student studentEdward = new Student("Edward", 15000);
+        Taxi taxiKakao = new Taxi("카카오");
+        studentEdward.takeTaxi(taxiKakao);
+
+        System.out.println( studentEdward );
+        System.out.println( taxiKakao );
     }
-
-    // [4] 188p. Edward 학생이 늦잠 자서 택시 타고 학교에
-    Student studentEdward = new Student("Edward", 15000);
-    Taxi taxiKakao = new Taxi("카카오");
-    //studentEdward.takeTaxi(taxiKakao);
-
 
 }

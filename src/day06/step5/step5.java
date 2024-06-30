@@ -16,7 +16,7 @@ public class step5 {
         myCar.color = "빨강";                // 객체내 멤버변수/필드에 값 대입
         myCar.carNumber = "250가4471";      // 객체내 멤버변수/필드에 값 대입
 
-        // 2. 무한루프
+        // 2. 무한루프 : while(true){} vs for( ;; ){}
         while(true) {
             // 출력함수
             System.out.println("------------------------------");

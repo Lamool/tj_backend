@@ -6,5 +6,5 @@ public interface Sell {
 
     static void pay() {}
 
-    default void order() {}
+    default void order(){ System.out.println("판매 주문"); }
 }

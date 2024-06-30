@@ -23,7 +23,6 @@ public class Step2 {
         for (int i = 2; i <= 10; i++) {
             num2 = num2 + i;
         }
-
         System.out.println(num2);
 
         // 2.
@@ -69,14 +68,12 @@ public class Step2 {
             sum2 += num4;
             num4++;
         } while (num4 <= 10);
-
         System.out.println(sum2);       // 55
+
         // vs
         sum2 = 0;
         for (int num5 = 1; num5 <= 10; num5++) {
             sum2 += num5;
-
-
         }
         System.out.println(sum2);   // 55
 
@@ -93,12 +90,19 @@ public class Step2 {
                 dan = 2
                     내부 times = 1 times = 2 times = 3 times = 4 times = 5 times = 6 times = 7 times = 8 times = 9
                 dan = 3
+                    내부 times = 1 times = 2 times = 3 times = 4 times = 5 times = 6 times = 7 times = 8 times = 9
                 dan = 4
+                    내부 times = 1 times = 2 times = 3 times = 4 times = 5 times = 6 times = 7 times = 8 times = 9
                 dan = 5
+                    내부 times = 1 times = 2 times = 3 times = 4 times = 5 times = 6 times = 7 times = 8 times = 9
                 dan = 6
+                    내부 times = 1 times = 2 times = 3 times = 4 times = 5 times = 6 times = 7 times = 8 times = 9
                 dan = 7
+                    내부 times = 1 times = 2 times = 3 times = 4 times = 5 times = 6 times = 7 times = 8 times = 9
                 dan = 8
+                    내부 times = 1 times = 2 times = 3 times = 4 times = 5 times = 6 times = 7 times = 8 times = 9
                 dan = 9
+                    내부 times = 1 times = 2 times = 3 times = 4 times = 5 times = 6 times = 7 times = 8 times = 9
             */
         // 외부 for문
         for (int dan = 2; dan <= 9; dan++) {
@@ -110,7 +114,7 @@ public class Step2 {
                 System.out.printf("%2d * %2d = %2d\n", dan, times, dan * times);
             }
             System.out.println("===========================");
-        }
+        }   // for end
 
 
 
@@ -133,7 +137,7 @@ public class Step2 {
             sum3 += num5;
         }
         System.out.println(sum3);
-
+        //  ======================== vs ================
         sum3 = 0;
         for (int num5 = 0; ; num5++) {
             sum3 += num5;
@@ -162,8 +166,7 @@ public class Step2 {
         }
         System.out.println("if문 : " + result);
 
-        result = 0;
-        // switch~case문
+        // vs switch~case문
         switch (operator) {
             case '+' :
                 result = number1 + number2;
@@ -183,6 +186,7 @@ public class Step2 {
 
         // 2.
         for (int dan = 2; dan <= 9; dan++) {
+            // 만약에 단이 홀수 이면
             if (dan % 2 != 0) continue;
 
             System.out.println(dan + "단");
@@ -221,6 +225,6 @@ public class Step2 {
         }
 
 
-    }
+    }   // main end
 
-}
+}   // class end

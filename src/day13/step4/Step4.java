@@ -46,7 +46,7 @@ public class Step4 {
         System.out.println(child.filed2);       // null
         child.method3();        // Child.method3
         // ----------------------------- //
-        Parent parent = child;  // 자식타입 ---> 부모타입*****(우선순위 오버라이딩)
+        Parent parent = child;  // 자식타입 ---> 부모타입*****( 자식타입의 오버라이딩 메소드 최우선 )
         parent.method1();       // Child.method1
         parent.method1();       // Child.method2
         System.out.println(parent.filed1);

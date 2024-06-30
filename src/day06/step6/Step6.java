@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Step6 {
     /*
-
         실습 [ step6 패키지 ]
             [ 요구사항 ]
             1. 기능이 무한적으로 반복되도록 구현
@@ -21,12 +20,8 @@ public class Step6 {
                     - number : 계좌번호
                 Stemp6 클래스
                     - main함수
-
     */
-
-
     //print 많이 찍기
-
 
     public static void main(String[] args) {
         // 1. 입력 객체 : 입력 기능( .next() )을 사용하기 위해 객체를 만드는 것
@@ -53,36 +48,31 @@ public class Step6 {
             System.out.println("ch = " + ch);
 
             // 3. 입력값에 따른 서로 다른 로직 처리(조건문)
-            if (ch == 1) {
+            if (ch == 1) {      // 만약에 내가 입력한 값이 1 이면 예금처리
                 System.out.println("예금처리");
                 System.out.print("예금할 금액 입력 : ");
                 int money = scanner.nextInt();
 //                System.out.println("money = " + money);
                 myAccount.balance += money;
 //                System.out.println("balance = " + balance);
-            } else if (ch == 2) {
+            } else if (ch == 2) {       // 만약에 내가 입력한 값이 2 이면 출금처리
                 System.out.println("출금처리");
                 System.out.print("출금할 금액 입력 : ");
                 int money = scanner.nextInt();
-                System.out.println();
                 myAccount.balance -= money;
-                System.out.println("balance = " + balance);
-
-            } else if (ch == 3) {
+            } else if (ch == 3) {       // 만약에 내가 입력한 값이 3 이면 잔고확인처리
                 System.out.println("잔고확인처리");
-                System.out.println("balance = " + balance);
-
-            } else if (ch == 4) {
+                System.out.println("balance = " + myAccount.balance);
+            } else if (ch == 4) {       // 만약에 내가 입력한 값이 4 이면 종료
                 System.out.println("종료");
                 break;
             } else {
                 System.out.println("알 수 없는 번호입니다.");
             }
 
-
-        }
-    }
-}
+        }   // while end
+    }   // main end
+}   // class end
 
 
 

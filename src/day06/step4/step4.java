@@ -15,15 +15,16 @@ public class step4 {
         String carNumber = "250가4471";
 
         int speed2 = 0;  // 속도변수 선언하고 0으로 초기화
-        String color2 = "빨강";
-        String carNumber2 = "250가4471";
+        String color2 = "노랑";
+        String carNumber2 = "250나7517";
 
         int speed3 = 0;  // 속도변수 선언하고 0으로 초기화
         String color3 = "빨강";
-        String carNumber3 = "250가4471";
+        String carNumber3 = "187오1234";
         
-        // 2. 무한루프
+        // 2. 무한루프 : while(true){} vs for( ;; ){}
         while(true) {
+            // 출력함수
             System.out.println("------------------------------");
             System.out.print(">>> 1. 증속 2. 감속 3. 중지 : ");
 
@@ -45,7 +46,6 @@ public class step4 {
             } else {
                 System.out.println("> 알 수 없는 입력번호입니다.");
             }
-
 
         }
 

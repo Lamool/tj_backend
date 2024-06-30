@@ -21,8 +21,6 @@ public class Step1 {
             System.out.println("JDBC 연동 실패 " + e);
         }
 
-
-
     }
 
 }

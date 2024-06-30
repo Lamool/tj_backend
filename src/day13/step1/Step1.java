@@ -49,8 +49,8 @@ public class Step1 {
 
         // 자동타입 변환          : byte -> short -> int -> long
         // 자식 타입은 부모타입으로 변환 가능
-        동물 bird2 = new 조류();        bird.showMe();      // 조류
-        동물 sparrow2 = new 참새();     sparrow.showMe();   // 참새
+        동물 bird2 = new 조류();        bird2.showMe();      // 조류
+        동물 sparrow2 = new 참새();     sparrow2.showMe();   // 참새
 
         // 강제타입 변환 * 전제조건이 필요       : byte <- (byte)short <- (short)int <- (int)long
         // 부모 타입은 자식타입으로 변환 불가능, 단 상속관계이면 가능, 상하관계만 가능(형제는 불가능)
@@ -81,14 +81,14 @@ public class Step1 {
          // 메모리자체가 위 아래만 형성됐기 때문에, 참새가 닭이 되고 싶어도 닭에 대한 그 객체가 안 만들어지니까(?)
 
 
-        // 부모타입으로 배열/리스트를 선언하면 해당 배열/리스트에는 부모타입 포함 자식타입도 저장이 가능하다.
+        // 부모타입으로 배열/리스트를 선언하면 해당 배열/리스트에는 본인타입 포함 자식타입도 저장이 가능하다.
         ArrayList<동물> 동물사전 = new ArrayList<>();
         동물사전.add(animal); 동물사전.add(bird); 동물사전.add(sparrow);
 
         // 부모타입으로 배열/리스트를 선언하면 해당 배열/리스트에는 본인타입 포함 하위 타입도 저장이 가능하다. 상위타입은 블가능.
         ArrayList<조류> 조류사전 = new ArrayList<>();
         // 조류사전.add(animal);
-
+        조류사전.add( bird ); 조류사전.add( sparrow );
 
     }
 

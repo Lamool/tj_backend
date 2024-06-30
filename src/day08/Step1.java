@@ -41,6 +41,9 @@ public class Step1 {
         for (int i = 0; i < alphabets.length; i++) {
             System.out.println(alphabets[i] + ", " + (int)alphabets[i]);
         }
+        // char c = 'A'         -----> 정수로 변환 O ==> 65
+        // String str = "ABC"   -----> 정수로 변환 X ==> [ 65 , 66 , 67 ]
+            // String <====> char[]
 
         //System.out.println(Arrays.toString(alphabets));
     }

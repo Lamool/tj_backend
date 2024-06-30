@@ -26,7 +26,7 @@ public class Dao {
     }
 
     // --- 각 기능별 함수 구현
-    // 2. 등록SQL 함수, 매개변수 : 저장할 값 String, 리턴 : 등록성공여부 boolean
+    // 1. 등록SQL 함수, 매개변수 : 저장할 값 String, 리턴 : 등록성공여부 boolean
     public boolean signupC(String name) {
         try {
             String sql = "insert into table1 values('" + name + "');";        System.out.println("sql : " + sql);
@@ -39,7 +39,7 @@ public class Dao {
         }
     }
 
-    // 3. 출력SQL 함수, 매개변수 : x, 리턴 : 회원목록 ArrayList<String>
+    // 2. 출력SQL 함수, 매개변수 : x, 리턴 : 회원목록 ArrayList<String>
     public ArrayList<String> printC() {
         ArrayList<String> list = new ArrayList<>();     // 리스트 (비어있는) 선언
 
@@ -49,7 +49,7 @@ public class Dao {
             rs = ps.executeQuery();
 
             while (rs.next()) {     // 레코드 하나씩 호출
-                System.out.println(rs.getString("name"));       // 현재 레코드의 name 필드 값을 호출하여 리스트에 저장
+                list.add(rs.getString("name"));       // 현재 레코드의 name 필드 값을 호출하여 리스트에 저장
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -58,7 +58,7 @@ public class Dao {
         return list;
     }
 
-    // 4. 수정SQL 함수, 매개변수 : 기존이름 String, 새로운 이름 String, 리턴 : 수정성공여부 boolean
+    // 3. 수정SQL 함수, 매개변수 : 기존이름 String, 새로운 이름 String, 리턴 : 수정성공여부 boolean
     public boolean updateC(String oldName, String newName) {
         try {
             String sql = "update table1 set name = '" + newName + "' where name='" + oldName + "'";         System.out.println("sql : " + sql);
@@ -71,7 +71,7 @@ public class Dao {
         }
     }
 
-    // 5. 삭제SQL 함수, 매개변수 : 삭제할이름 String, 리턴 : 삭제성공여부 boolean
+    // 4. 삭제SQL 함수, 매개변수 : 삭제할이름 String, 리턴 : 삭제성공여부 boolean
     public boolean deleteC(String name) {
         // 2. DB SQL 레코드 삭제 : "delete from table1 where name = '유재석'";
         try {

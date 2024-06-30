@@ -22,8 +22,7 @@ public class Car {
 
 
 class SportCar extends Car {    // extends : 상속
-    // 빠른 개발 : 기존에 있던 설계도/클래스를 물려받아서 커스텀 해서 새로운 설계도/클래스 제작
-
     public int power;
 
+    // 빠른 개발 : 기존에 있던 설계도/클래스를 물려받아서 커스텀 해서 새로운 설계도/클래스 제작
 }

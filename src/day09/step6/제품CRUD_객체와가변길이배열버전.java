@@ -1,6 +1,5 @@
-package day09.step3;
+package day09.step6;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class 제품CRUD_객체와가변길이배열버전 {
@@ -31,7 +30,6 @@ public class 제품CRUD_객체와가변길이배열버전 {
                 for (int i = 0; i < product.length; i++) {
                     productCopy[i] = product[i];
 
-
                     // 각각의 요소들도 사실 주소를 갖고 있었디.
                     // 그 각각도 주소를 준 것
                 }
@@ -39,6 +37,8 @@ public class 제품CRUD_객체와가변길이배열버전 {
                 product = productCopy;      // 값을 주는 게 아니라 주소를 주는 거다.
 
                 product[count-1] = new 제품(code, name, price);
+
+
 
             } else if (ch == 2) {
                 System.out.println("========== 제품목록 ==========");

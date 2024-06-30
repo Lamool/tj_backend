@@ -12,12 +12,22 @@ public class Step2 {
         new ImplementClass();       // <----- (인터페이스를 구현한 클래스의) 객체
         si = new ImplementClass();
 
+        si.method1( 3 );        // ImplementClass.method1
+        si.method2( "JAVA");    // ImplementClass.method2
+        si.method3( 4 );        // StepInterface.method3
+        si.method4( "JAVA");    // StepInterface.method4
+        //si.method5( 5 );         // static 객체 없이 사용하는 멤버들
+        //si.method6( "JAVA");     // static 객체 없이 사용하는 멤버들
+        StepInterface.method5( 5 );         // 이렇게 사용해줘야 됨
+        StepInterface.method6( "JAVA");
 
+        // si.method7( 6 );        // private 이므로 외부 클래스로부터 사용불가능
+        // si.method8( "JAVA" );   // private 이므로 외부 클래스로부터 사용불가능
 
-        // si.method5(5);  // static 객체 없이 사용하는 멤버들
-        // si.method6("JAVA");  // static 객체 없이 사용하는 멤버들
-        //StepInterface.method(5);    // 이렇게 사용해줘야 됨
+        //si.method9( 7 );            // private 이므로 외부 클래스로부터 사용불가능
+        //si.method10( "JAVA");        // private 이므로 외부 클래스로부터 사용불가능
 
+        System.out.println( StepInterface.value1 );
 
     }
 

@@ -6,5 +6,7 @@ public interface Buy {
 
     static void pay() {}
 
-    default void order() {}
+    default void order(){
+        System.out.println(" 구매 주문");
+    }
 }

@@ -24,12 +24,10 @@ public class CustomerTest {
             customer2.sell();
         }
 
-        customer.order();
-
-
         Buy.pay();
         Sell.pay();
 
+        customer.order();
 
     }
 

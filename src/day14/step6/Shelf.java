@@ -9,8 +9,8 @@ public class Shelf {    // 선반 역할 하는 클래스
         // protected vs public vs private vs 생략(default)
         // ArrayList<타입> 리스트변수명   vs   타입[] 배열변수명
             // 1. .add() : 리스트에 요소를 추가하는 함수
-            // 2. .size() : 리스트내 요소들의 총 개수  vs length
-            // 3. .remove(인덱스) : 리스트내 해당 인덱스의 요소 삭제
+            // 2. .size() : 리스트내 요소들의 총 개수 반환 함수  vs length
+            // 3. .remove(인덱스) : 리스트내 해당 인덱스의 요소 삭제 함수
 
     // 2. 생성자
     public Shelf() {
