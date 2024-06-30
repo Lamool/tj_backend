@@ -17,18 +17,6 @@ public class Step2 {
             strList.add("자바");
             strList.add("파이썬");
 
-            // 리스트내 요소 찾기
-            // 리스트변수명.indexOf(값 또는 객체) : 리스트내 값 또는 객체가 존재하면 찾은 인덱스 반환 없으면 -1
-            // 리스트변수명.contains() : 리스트내 값 또는 객체가 존재면 true 없으면 false
-
-            // 리스트 순회
-            // 1.
-            //      1. for ( int i = 0; i < 리스트변수명.size(); i++_) { 리스트변수명.get(i); }
-            //      2.
-
-
-
-
         // [3] p.224
         ArrayList<Book> library = new ArrayList<>();
 
@@ -41,7 +29,7 @@ public class Step2 {
         library.add(new Book("어린왕자", "생텍쥐페리"));
 
         // 리스트 순회하는 방법1
-        // for (int
+        // for( int 반복변수명 = 0 ; i<리스트.size() ; i++ ){ }
         for (int i = 0; i < library.size(); i++) {
             Book book = library.get(i);
             System.out.println(book);
@@ -57,6 +45,8 @@ public class Step2 {
         // 리스트명.forEach(반복변수명 -> 실행문);
         library.forEach(book -> System.out.println(book));
 
+        //
+        library.clear();
     }
 
 }

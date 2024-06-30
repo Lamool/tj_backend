@@ -25,7 +25,6 @@ public class StudentTest {
 
 
 
-
         // p.229 코드 주석 처리
 //        Student studentLee = new Student(1001, "Lee");
 //        studentLee.addSubject("국어", 100);

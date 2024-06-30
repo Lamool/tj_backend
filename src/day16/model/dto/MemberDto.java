@@ -3,12 +3,12 @@ package day16.model.dto;            // 현재 클래스 파일이 위치한 폴�
 // 이동객체     // ((매개변수 많을 때 일일이 다 쓸 수 없잖아. 이렇게 묶어서 줄 수 있음))
 public class MemberDto {           // MemberDto 클래스 선언
     // 1. 멤버변수 <---> DB 테이블 필드와 동일, private 권장
-    private String mid;         // 접근제한자가 private이고 String으로 선언된 멤버변수
-    private String mpwd;        // 접근제한자가 private이고 String으로 선언된 멤버변수
-    private String mname;       // 접근제한자가 private이고 String으로 선언된 멤버변수
-    private String mphone;      // 접근제한자가 private이고 String으로 선언된 멤버변수
-    private String mdate;       // 접근제한자가 private이고 String으로 선언된 멤버변수
-    private int mno;            // 접근제한자가 private이고 int형으로 선언된 멤버변수
+    private String mid;         // 아이디      // 접근제한자가 private이고 String으로 선언된 멤버변수
+    private String mpwd;        // 비밀번호    // 접근제한자가 private이고 String으로 선언된 멤버변수
+    private String mname;       // 이름       // 접근제한자가 private이고 String으로 선언된 멤버변수
+    private String mphone;      // 전화번호    // 접근제한자가 private이고 String으로 선언된 멤버변수
+    private String mdate;       // 가입일      // 접근제한자가 private이고 String으로 선언된 멤버변수
+    private int mno;            // 회원번호    // 접근제한자가 private이고 int형으로 선언된 멤버변수
 
     // 2. 생성자 : 기본생성자, 풀생성자
     public MemberDto() {}           // 매개변수와 실행문이 없는 기본생성자이다

@@ -19,7 +19,7 @@ create table table2(
     # on update cascade
     # on update set null
 );
-    
+
 
 insert into table1 values(1), (2), (3), (4), (5);	-- 샘플
 select * from table1;		-- 확인
@@ -28,10 +28,10 @@ insert into table2 values(1, 1), (2, 1), (3, 2), (4, 2), (5, 3);	-- 샘플
 select * from table2;		-- 확인
 
 delete from table1 where mno_pk = 1;  -- 회원번호가 '1'인 레코드 삭제??? 삭제 안 됨 - (해당 PK값이 다른 테이블에 존재하기 때문에)
-delete from table1 where mno_pk = 4;  -- 회원번호가 '4'인 레코드 삭제??? 삭제 됨 - (해당 PK값이 다른 테이블에 존재하기 않아서) 
+delete from table1 where mno_pk = 4;  -- 회원번호가 '4'인 레코드 삭제??? 삭제 됨 - (해당 PK값이 다른 테이블에 존재하기 않아서)
 
 
-update table1 set mno_pk = 6 where mno_pk = 1;		-- 회원번호가 '1'인 pk 값을 '6'으로 수정 
+update table1 set mno_pk = 6 where mno_pk = 1;		-- 회원번호가 '1'인 pk 값을 '6'으로 수정
 
 
 select * from table1;	-- 확인
@@ -46,6 +46,5 @@ select * from table2;
 	# 4. on update restrict : 						//					   pk 수정 불가능 (기본값)
     # 5. on update cascade	: 						//					   pk - fk 같이 수정
     # 6. on update set null : 						// 					   pk 수정시 fk는 null 대입/변경
-    
-    
-    
+
+
