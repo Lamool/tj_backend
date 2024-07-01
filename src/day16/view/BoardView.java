@@ -1,8 +1,11 @@
 package day16.view;             // 현재 클래스 파일이 위치한 폴더/패키지명 // 클래스 생성시 자동으로 할당된다
 
+import day16.controller.BoardController;
 import day16.controller.MemberController;       // 다른 패키지에 속한 MemberController 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
+import day16.model.dto.BoardDto;
 import day16.model.dto.MemberDto;               // 다른 패키지에 속한 MemberDto 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
 
+import java.util.ArrayList;
 import java.util.Scanner;           // java.util 패키지에 속한 Scanner 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
 
 public class BoardView {        // BoardView 클래스 선언
@@ -95,7 +98,133 @@ public class BoardView {        // BoardView 클래스 선언
 
     // 4. 게시판(게시물전체출력) 함수
     public void bprint() {      // bprint() start
+        // BoardController에게 전체 게시물 조회 요청
+        ArrayList<BoardDto> result = BoardController.getInstance().bPrint();
+
+        System.out.println("번호\t조회수\t작성일\t\t\t제목");
+        // 리스트객체명.forEach( 반복변수 -> { 실행문; } );       // 리스트내 전체 dto를 하나씩 반복변수에 대입 반복
+        result.forEach (dto -> {
+            System.out.printf("%2d\t%2d\t%10s\t%s \n", dto.getBno(), dto.getBview(), dto.getBdate(), dto.getBtitle());
+        });
+        System.out.print("0.글쓰기 1~.개별글조회 : ");
+        int ch = scan.nextInt();
+        if (ch == 0) {
+            bWrite();
+        } else if (ch >= 1) {
+            bView(ch);
+        }
 
     }   // bprint() end
 
+
+    // 5. 게시물 쓰기 함수, btitle, bcontent
+    public void bWrite() {
+        // 1. btitle , bcontent 입력받기
+        scan.nextLine();
+        System.out.print("제목 : ");
+        String btitle = scan.nextLine();
+        System.out.print("내용 : ");
+        String bcontent = scan.nextLine();
+
+        // 2. 입력받은 값들을 객체의 각각 매개변수에 값 대입
+        BoardDto boardDto = new BoardDto();
+        boardDto.setBtitle(btitle);
+        boardDto.setBcontent(bcontent);
+
+        // 3. 입력받은 객체를 컨트롤에게 전달 후 결과 응답 받기
+        boolean result = BoardController.getInstance().bWrite(boardDto);
+        if (result) {
+            System.out.println(">> 글작성 성공");
+        } else {
+            System.out.println("글작성 실패");
+        }
+
+    }
+
+
+    // 6. 게시물 개별 조회 함수
+    public void bView(int bno) {
+        // 매개변수로 선택 받은 게시물을 번호를 컨트롤에게 전달 후 해당 게시물 정보 얻기
+        BoardDto result = BoardController.getInstance().bView(bno);
+
+        if (result == null) {
+            System.out.println(">> 존재하지 않는 게시물입니다");
+            return;
+        }
+
+        System.out.println("제목 : " + result.getBtitle());
+        System.out.println("작성자 : " + result.getMno());
+        System.out.println("\t조회수 : " + result.getBview());
+        System.out.println("작성일 : " + result.getBdate());
+        System.out.println("내용 : " + result.getBcontent());
+
+        System.out.print(">> 1.삭제 2.수정 : ");
+        int ch = scan.nextInt();
+
+        if (ch == 1) {
+            bDelete(bno);
+        } else if (ch == 2) {
+            bUpdate(bno);
+        }
+    }
+
+
+    // 7. 게시물 삭제 함수
+    public void bDelete(int bno) {
+        boolean result = BoardController.getInstance().bDelete(bno);
+        if (result) {
+            System.out.println(">> 삭제 성공");
+        } else {
+            System.out.println(">> 삭제 실패");
+        }
+    }
+
+
+    // 8. 게시물 수정 함수
+    public void bUpdate(int bno) {
+        // 1. newBtitle , newBcontent 입력받기
+        scan.nextLine();
+        System.out.print("새로운 제목 : ");
+        String newBtitle = scan.nextLine();
+        System.out.print("새로운 내용 : ");
+        String newBcontent = scan.nextLine();
+
+        // 2. 입력받은 값들을 객체의 각각 매개변수에 값 대입
+        BoardDto boardDto = new BoardDto();
+        boardDto.setBtitle(newBtitle);
+        boardDto.setBcontent(newBcontent);
+        boardDto.setBno(bno);
+
+        // 3. 입력받은 객체를 컨트롤에게 전달 후 결과 응답 받기
+        boolean result = BoardController.getInstance().bUpdate(boardDto);
+
+        if (result) {
+            System.out.println(">> 수정 성공");
+        } else {
+            System.out.println(">> 수정 실패");
+        }
+
+    }
+
+
 }   // class end
+
+
+
+
+/*
+
+    [ 모든 글 출력 ] 글 1개 당 --> 레코드 1개 --> DTO 1개 --> 모든 글 --> 레코드 여러 개 --> DTO 여러 개 --> ArrayList<DTO>
+    V       C       DAO
+        x    ->    x
+               <-  DTO 1개는 안 됨
+                   ArrayList<DTO>
+
+    [ 개별 글 출력 ]
+
+
+
+
+
+
+*/

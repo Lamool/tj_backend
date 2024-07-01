@@ -2,6 +2,12 @@ package day16.model.dto;            // 현재 클래스 파일이 위치한 폴�
 
 // 이동객체     // ((매개변수 많을 때 일일이 다 쓸 수 없잖아. 이렇게 묶어서 줄 수 있음))
 public class MemberDto {           // MemberDto 클래스 선언
+
+    // DB테이블의 회원마다 레코드/행 1개이고 레코드/행 1개당 DTO 1개
+    // -> 회원이 여러 개이면 DTO 여러 개 -> ArrayList<MemberDto>
+    // Dto는 데이터 여러 개를 운반하고 그러는 애이기 때문에(?) 싱글톤을 쓰면 안 된다
+    // Controller 같은 경우 기능을 담당하는 애니까
+
     // 1. 멤버변수 <---> DB 테이블 필드와 동일, private 권장
     private String mid;         // 아이디      // 접근제한자가 private이고 String으로 선언된 멤버변수
     private String mpwd;        // 비밀번호    // 접근제한자가 private이고 String으로 선언된 멤버변수

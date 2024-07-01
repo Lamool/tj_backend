@@ -8,6 +8,9 @@ public class MemberController {     // MemberController 클래스 선언
     // 접근제한자를 안 붙이면 기본이 default인데, default면 패키지 다른 경우 오류가 나서 public을 붙여주었다.
     // 해당 클래스의 함수들을 다른 클래스에서 호출 할 수 있도록 static도 써주었다.
     // MemberController 클래스의 생성자를 호출하여 객체를 생성한 뒤 주소값을 mcontrol에 저장해준다
+        // 만약 이걸 지우고서 다른 곳에 new 해주게 되면
+        // 멤버변수는 객체마다이기 때문에 loginMno(공유해서 사용하는 애)가 각각 생성됨.
+        // 그래서 이렇게 미리 만들어주는 것. 서로 다른 곳에서 Controller 호출하면 같은 loginMno를 가리킨다
     public static MemberController mcontrol = new MemberController();
 
     // 1. 회원가입 화면 함수, 매개변수 : MemberDto(아이디 String, 비번 String, 이름 String, 전화번호 String), 반환값 : 회원가입 성공 여부 boolean

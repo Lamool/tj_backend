@@ -7,10 +7,20 @@ import java.util.InputMismatchException;        // java.util 패키지에 속한
 import java.util.Scanner;                       // java.util 패키지에 속한 Scanner 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
 
 public class MemberView {       // MemberView 클래스 선언
-    // 해당 클래스의 함수들을 다른 클래스에서 호출 할 수 있도록 static을 써줌
+    // 해당 클래스의 함수들을 다른 클래스에서 호출 할 수 있도록 static 변수에 해당 객체 만들기
     // ((접근제한자 안 붙이면 기본이 default임. 패키지 다른 경우 default면 오류나서 public 붙여준 것))
     // MemberView 클래스의 생성자를 호출하여 객체를 생성한 뒤 주소값을 mView에 저장해준다
+        // static 선언시점 : 프로그램 시작시
+        // static 사라짐/초기화 시점 : 프로그램 종료시
+    // 왜 MemberView에는 public static MemberView mView = new MemberView(); 이게 있는데 Dto에는 없는가?
+        // 얘는 주요 역할이 기능 처리.
+        // 메소드를 실행하기 위해서는 객체 필요. static 메소드가 아닌 이상.
+        // 멤버변수는 객체마다 할당, 메소드는 객체마다 실행을 하지만 코드는 공유
+        // 전역 객체 -> 모든 곳에서 호출 가능한 객체 1개
+        // 안정성보장
+        // 싱글톤 : 프로그램내 전역으로 하나의 객체를 생성, 주로 전역에서 공유할 때.   생성자에 private.
     public static MemberView mView = new MemberView();
+    private MemberView() {}     // 생성자에 private 한다 : 다른 클래스에서 new를 못한다.
 
     // 멤버변수 : 입력객체
     Scanner scan = new Scanner(System.in);      // 사용자의 입력을 받기 위해 Scanner 클래스를 생성하고 초기화하는 것이다. System.in은 표준 입력 스트림을 의미한다.
