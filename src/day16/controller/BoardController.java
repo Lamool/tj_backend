@@ -2,6 +2,7 @@ package day16.controller;       // 현재 클래스 파일이 위치한 폴더/�
 
 import day16.model.dao.BoardDao;
 import day16.model.dto.BoardDto;
+import day16.model.dto.ReplyDto;
 
 import java.util.ArrayList;
 
@@ -43,8 +44,9 @@ public class BoardController {          // BoardController 클래스 선언
 
     // 6. 게시물 개별 조회 함수
     public BoardDto bView(int bno) {
+        // 해당 게시물 조회수 처리
+        BoardDao.getInstance().viewIncrease(bno);
         return BoardDao.getInstance().bView(bno);
-
 
     }
 
@@ -65,5 +67,21 @@ public class BoardController {          // BoardController 클래스 선언
         return BoardDao.getInstance().bUpdate(boardDto);
     }
 
+    // 9. 댓글 출력 함수
+    public ArrayList<ReplyDto> rPrint(int bno) {
+        return BoardDao.getInstance().rPrint(bno);
+
+    }   // rPrint 함수 end
+
+    // 10. 댓글 쓰기 함수
+    public boolean rWrite(ReplyDto replyDto) {
+        // 4. BoardView로부터 전달받은 ReplyDto에 로그인된 회원번호도 같이 묶어주기
+        // 현재 로그인된 회원의 번호를 dto 대입, 즉) 작성자 회원번호
+        replyDto.setMno(MemberController.mcontrol.loginMno);
+
+        // 5. ReplyDto를 BoardDao에 전달하기 / BoardDao로부터 받은 반환값(댓글 쓰기 성공여부)을 BoardView에게 반환하기
+        return BoardDao.getInstance().rWrite(replyDto);
+
+    }   // rWrite 함수 end
 
 }   // class end

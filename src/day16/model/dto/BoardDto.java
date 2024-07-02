@@ -8,7 +8,14 @@ public class BoardDto {                 // BoardDto 클래스 선언
     private int bview;
     private int mno;
     private int bno;
-
+    // + 작성자 아이디
+    private String mid;
+    public String getMid() {
+        return mid;
+    }
+    public void setMid(String mid) {
+        this.mid = mid;
+    }
 
     // 2. 생성자
     public BoardDto() {}

@@ -33,6 +33,11 @@ public class MemberController {     // MemberController 클래스 선언
         loginMno = 0;       // loginMno 값이 0일 때 비로그인상태라고 정해두었기에 로그아웃 함수를 호출하면 loginMno 값을 0으로 바꿔준다.
     }   // logout 함수 end
 
+    // 2-3. 현재 로그인 상태 반환 함수
+    public boolean loginState() {
+        return loginMno == 0 ? false : true;
+    }
+
     // 2. 로그인 화면 함수 ㅡ 매개변수 : MemberDto(아이디, 비밀번호), 리턴값 : boolean (성공 / 실패)
     public boolean login(MemberDto memberDto) {     // login 함수 start
         // MemberDao 클래스에 외부 클래스로부터 내부 메소드를 사용할 수 있도록 만든 static 변수인 mdao를 이용하여 login 함수를 호출한다

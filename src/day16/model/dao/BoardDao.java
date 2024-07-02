@@ -1,6 +1,7 @@
 package day16.model.dao;            // 현재 클래스 파일이 위치한 폴더/패키지명 // 클래스 생성시 자동으로 할당된다
 
 import day16.model.dto.BoardDto;
+import day16.model.dto.ReplyDto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -40,10 +41,15 @@ public class BoardDao {             // BoardDao 클래스 선언
         ArrayList<BoardDto> list = new ArrayList<>();
 
         try {   // 0. 예외처리
-            String sql = "select * from board;";    // 1. SQL 작성
+            // String sql = "select * from board;";    // 1. SQL 작성
+            // pk랑 fk만
+            String sql = "select * from board b inner join member m on b.mno = m.mno;";
+
             ps = conn.prepareStatement(sql);        // 2. SQL 기재
+
             rs = ps.executeQuery();                 // 3. 기재된 sql 실행 하고 결과 반환
                                                         // rs에 대입해주지 않으면 Cannot invoke "java.sql.ResultSet.next()" because "this.rs" is null 오류 발생
+
             while (rs.next()) {                     // 4. 결과 레코드 전체를 하나씩 순회하기
                 // ((rs가 조작을 할 수 있는 기능을 가지고 있는데))
                 // ((rs.next() 처음부터 첫 번째 레코드를 가지고 있는 게 아님. 한 번 했을 때 첫 번째 레코드를 가지게 됨.))
@@ -59,7 +65,8 @@ public class BoardDao {             // BoardDao 클래스 선언
                 int bno = rs.getInt("bno");
 
                 // Dto 만들기
-                BoardDto boardDto = new BoardDto(btitle, bcontent, bdate, bview, mno, bno);
+                BoardDto boardDto = new BoardDto(btitle, bcontent, bdate, bview, mno, bno);     // Dto 1개 만들기
+                boardDto.setMid(rs.getString("mid"));
 
                 list.add(boardDto);     // 리스트에 dto 담기
                 // return list;     // 여기서 return하면 안 됨. 결과 레코드 전체를 하나씩 순회해야 하는데 하나만 받아오고 함수를 끝내기 때문
@@ -94,7 +101,6 @@ public class BoardDao {             // BoardDao 클래스 선언
 
     }
 
-
     // 6. 게시물 개별 조회 함수
     public BoardDto bView(int bno) {
         try {       // 0. 예외처리
@@ -121,7 +127,6 @@ public class BoardDao {             // BoardDao 클래스 선언
         return null;    // 오류 또는 게시물이 존재하지 않을 때 null 반환
 
     }
-
 
     // 7. 게시물 삭제 함수, 매개변수 : bno, mno (게시물번호, 로그인된 회원번호)
     public boolean bDelete(int bno, int mno) {
@@ -156,6 +161,67 @@ public class BoardDao {             // BoardDao 클래스 선언
         }
         return false;
 
+    }
+
+    // 9. 댓글 출력 함수
+    public ArrayList<ReplyDto> rPrint(int bno) {
+        ArrayList<ReplyDto> list = new ArrayList<>();   // 여러 개 ReplayDto 담을 리스트
+
+        try {   // 0. 예외처리
+            //String sql = "select * from reply where bno = ?;";  // 1. SQL 작성
+            String sql = "select * from reply r inner join member m on r.mno = m.mno where r.bno = ?;";
+            ps = conn.prepareStatement(sql);    // 2. SQL 기재
+            ps.setInt(1, bno);  // 3. 기재된 SQL의 ? 매개변수 값 대입
+            rs = ps.executeQuery();     // 4. sql 실행 후 결과 반환
+
+            while (rs.next()) {     // 5. 결과에 따른 처리, rs.next() : 결과에서 다음 레코드 이동
+                ReplyDto replyDto = new ReplyDto(
+                        rs.getString("rcontent"), rs.getString(2), rs.getInt(3),
+                        rs.getInt(4), rs.getInt(5)
+                );
+                replyDto.setMid(rs.getString(6));
+                // 생성된 dto를 리스트에 담기
+                list.add(replyDto);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return list;
+    }   // rPrint 함수 end
+
+    // 10. 댓글 쓰기 함수
+    public boolean rWrite(ReplyDto replyDto) {
+        // 6.
+        try {   // 0. 예외처리
+            String sql = "INSERT INTO reply(rcontent, mno, bno) values(?, ?, ?);";      // 1. SQL 작성
+            ps = conn.prepareStatement(sql);        // 2. SQL 기재
+            ps.setString(1, replyDto.getRcontent());    // 기재된 SQL의 매개변수 값 대입
+            ps.setInt(2, replyDto.getMno());
+            ps.setInt(3, replyDto.getBno());
+            int count = ps.executeUpdate();
+            if (count == 1) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+
+    }   // rWrite 함수 end
+
+    // 11. 조회수 증가 처리
+    public boolean viewIncrease(int bno) {
+        try {
+            String sql = "update board set bview = bview + 1 where bno = ?;";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, bno);
+            int count = ps.executeUpdate();
+            if(count == 1) return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
     }
 
 }   // class end

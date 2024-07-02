@@ -4,6 +4,7 @@ import day16.controller.BoardController;
 import day16.controller.MemberController;       // 다른 패키지에 속한 MemberController 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
 import day16.model.dto.BoardDto;
 import day16.model.dto.MemberDto;               // 다른 패키지에 속한 MemberDto 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
+import day16.model.dto.ReplyDto;
 
 import java.util.ArrayList;
 import java.util.Scanner;           // java.util 패키지에 속한 Scanner 클래스를 현재 파일에서 사용할 수 있도록 해주는 코드
@@ -101,11 +102,12 @@ public class BoardView {        // BoardView 클래스 선언
         // BoardController에게 전체 게시물 조회 요청
         ArrayList<BoardDto> result = BoardController.getInstance().bPrint();
 
-        System.out.println("번호\t조회수\t작성일\t\t\t제목");
+        System.out.println("번호\t조회수\t작성일\t\t\t작성자\t제목");
         // 리스트객체명.forEach( 반복변수 -> { 실행문; } );       // 리스트내 전체 dto를 하나씩 반복변수에 대입 반복
         result.forEach (dto -> {
-            System.out.printf("%2d\t%2d\t%10s\t%s \n", dto.getBno(), dto.getBview(), dto.getBdate(), dto.getBtitle());
+            System.out.printf("%2d\t%2d\t%10s\t%10s\t%s \n", dto.getBno(), dto.getBview(), dto. getBdate(), dto.getMid(), dto.getBtitle());
         });
+
         System.out.print("0.글쓰기 1~.개별글조회 : ");
         int ch = scan.nextInt();
         if (ch == 0) {
@@ -158,13 +160,21 @@ public class BoardView {        // BoardView 클래스 선언
         System.out.println("작성일 : " + result.getBdate());
         System.out.println("내용 : " + result.getBcontent());
 
-        System.out.print(">> 1.삭제 2.수정 : ");
+        // -------- 댓글 출력 -------- //
+        rPrint(bno);
+        // -------------------------- //
+
+        System.out.print(">> 0.뒤로가기 1.삭제 2.수정 3. 댓글쓰기 : ");
         int ch = scan.nextInt();
 
         if (ch == 1) {
             bDelete(bno);
         } else if (ch == 2) {
             bUpdate(bno);
+        } else if (ch == 3) {
+            rWrite(bno);
+        } else if (ch == 0) {
+            return;
         }
     }
 
@@ -204,7 +214,54 @@ public class BoardView {        // BoardView 클래스 선언
             System.out.println(">> 수정 실패");
         }
 
-    }
+    }   // bUpdate 함수 end
+
+    // 9. 댓글 출력 함수, 게시물번호를 넘겨주고 / ArrayList<ReplyDto>를 받아온다
+    public void rPrint(int bno) {
+        ArrayList<ReplyDto> result = BoardController.getInstance().rPrint(bno);
+
+        // 리스트객체명.forEach( 반복변수 -> { 실행문; } );       // 리스트내 요소들을 하나씩 반복변수에 대입 반복 처리
+            // 리스트내 요소들을 하나씩 반복변수에 대입 반복 처리
+        System.out.println("-----------------댓글-----------------");
+        System.out.println("작성일\t\t\t작성자\t제목");
+        result.forEach(reply -> {
+            System.out.printf("%s %d %s \n", reply.getRdate(), reply.getMno(), reply.getRcontent());
+        });
+
+    }   // rPrint 함수 end
+
+    // 10. 댓글 쓰기 함수, 게시물번호, 댓글내용을 넘겨주고 (Controller에서는 로그인된 회원번호를 추가로 넘겨주기 / 댓글 작성 성공 여부를 받아온다
+    public void rWrite(int bno) {
+        // 만약에 코드 상황 상 로그인 후 댓글쓰기가 아니었다면
+            // 로그인상태를 확인 후 댓글 쓰기 진행
+        if (MemberController.mcontrol.loginState()) {
+            System.out.println(">> 로그인 후 가능합니다.");
+            return;
+        }
+
+        // 1. 댓글 내용 입력 받기
+        // 위에서 next() 후 엔터 쳤을 때 scan객체에 엔터/개행 기록이 남아있기 때문에 nextLine() 인식해서 입력했다는 걸로 간주
+        // 해결방안 : next() nextLine() 사이에 의미 없는 scan.nextLine(); 코드 작성
+        scan.nextLine();
+        System.out.print("댓글 내용 : ");
+        String rcontent = scan.nextLine();
+
+        // 2. ReplyDto로 묶기
+        ReplyDto replyDto = new ReplyDto();
+        replyDto.setBno(bno);
+        replyDto.setRcontent(rcontent);
+
+        // 3. ReplyDto를 BoardController에게 전달하기 / 반환값을 result에 대입
+        boolean result = BoardController.getInstance().rWrite(replyDto);
+
+        // . BoardController로부터 받은 댓글 쓰기 성공 여부에 따라 문구 출력
+        if (result) {
+            System.out.println(">> 댓글 작성 성공");
+        } else {
+            System.out.println(">> 댓글 작성 실패");
+        }
+
+    }   // rWrite 함수 end
 
 
 }   // class end
@@ -220,7 +277,22 @@ public class BoardView {        // BoardView 클래스 선언
                <-  DTO 1개는 안 됨
                    ArrayList<DTO>
 
-    [ 개별 글 출력 ]
+    [ 개별 글 출력 ] 글 1개 당 --> 레코드 1개 --> DTO 1개
+    V       C       DAO
+        게시물번호    -> 게시물번호
+        BoardDto   <-  BoardDto
+
+
+
+
+                   V                          C                               DAO
+    [ 댓글 출력 ]
+                       bno                           bno
+                       ArrayList<ReplyDto>           ArrayList<ReplyDto>
+
+    [ 댓글 쓰기 ]
+                       rcontent bno                  rcontent bno mno(현재 로그인된 회원번호)
+                       boolean                       boolean
 
 
 
