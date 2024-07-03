@@ -104,16 +104,18 @@ public class BoardView {        // BoardView 클래스 선언
 
         System.out.println("번호\t조회수\t작성일\t\t\t작성자\t제목");
         // 리스트객체명.forEach( 반복변수 -> { 실행문; } );       // 리스트내 전체 dto를 하나씩 반복변수에 대입 반복
-        result.forEach (dto -> {
-            System.out.printf("%2d\t%2d\t%10s\t%10s\t%s \n", dto.getBno(), dto.getBview(), dto. getBdate(), dto.getMid(), dto.getBtitle());
+        result.forEach(dto -> {
+            System.out.printf("%2d\t%2d\t%10s\t%10s\t%s \n", dto.getBno(), dto.getBview(), dto.getBdate(), dto.getMid(), dto.getBtitle());
         });
 
-        System.out.print("0.글쓰기 1~.개별글조회 : ");
+        System.out.print("-1.제목검색 0.글쓰기 1~.개별글(번호)조회 : ");
         int ch = scan.nextInt();
         if (ch == 0) {
             bWrite();
         } else if (ch >= 1) {
             bView(ch);
+        } else if (ch == -1) {
+            search();
         }
 
     }   // bprint() end
@@ -225,7 +227,7 @@ public class BoardView {        // BoardView 클래스 선언
         System.out.println("-----------------댓글-----------------");
         System.out.println("작성일\t\t\t작성자\t제목");
         result.forEach(reply -> {
-            System.out.printf("%s %d %s \n", reply.getRdate(), reply.getMno(), reply.getRcontent());
+            System.out.printf("%s %s %s \n", reply.getRdate(), reply.getMid(), reply.getRcontent());
         });
 
     }   // rPrint 함수 end
@@ -264,6 +266,31 @@ public class BoardView {        // BoardView 클래스 선언
     }   // rWrite 함수 end
 
 
+    // 12. 제목 검색 함수
+    public void search() {
+        // 1. 검색할 키워드를 입력받는다
+        scan.nextLine();
+        System.out.print(">> 제목 검색 : ");
+        String searchTitle = scan.nextLine();
+
+        // 2. 입력받은 값(String)을 BoardController에게 넘겨주기, ArrayList<BoardDto> 반환 받기
+        ArrayList<BoardDto> result = BoardController.getInstance().search(searchTitle);
+
+        // 게시물 출력
+        if (result.isEmpty()) {
+            System.out.println("찾는 게시물이 없습니다.");
+        } else {
+            System.out.println("번호\t조회수\t작성일\t\t\t작성자\t제목");
+            // 리스트객체명.forEach( 반복변수 -> { 실행문; } );       // 리스트내 전체 dto를 하나씩 반복변수에 대입 반복
+            result.forEach(dto -> {
+                System.out.printf("%2d\t%2d\t%10s\t%10s\t%s \n", dto.getBno(), dto.getBview(), dto.getBdate(), dto.getMid(), dto.getBtitle());
+            });
+        }
+
+
+    }   // search() end
+
+
 }   // class end
 
 
@@ -293,6 +320,11 @@ public class BoardView {        // BoardView 클래스 선언
     [ 댓글 쓰기 ]
                        rcontent bno                  rcontent bno mno(현재 로그인된 회원번호)
                        boolean                       boolean
+
+
+    -------------------------------------------------------------------------------------------
+
+
 
 
 

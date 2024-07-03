@@ -84,4 +84,12 @@ public class BoardController {          // BoardController 클래스 선언
 
     }   // rWrite 함수 end
 
+    // 12. 제목 검색 함수
+    public ArrayList<BoardDto> search(String searchTitle) {
+//        ArrayList<BoardDto> result = BoardDao.getInstance().search(searchTitle);
+//        System.out.println("result = " + result);
+
+        return BoardDao.getInstance().search(searchTitle);
+    }   // search 함수 end
+
 }   // class end

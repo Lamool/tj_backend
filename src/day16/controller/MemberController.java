@@ -35,7 +35,7 @@ public class MemberController {     // MemberController 클래스 선언
 
     // 2-3. 현재 로그인 상태 반환 함수
     public boolean loginState() {
-        return loginMno == 0 ? false : true;
+        return loginMno == 0 ? true : false;
     }
 
     // 2. 로그인 화면 함수 ㅡ 매개변수 : MemberDto(아이디, 비밀번호), 리턴값 : boolean (성공 / 실패)

@@ -43,7 +43,7 @@ public class BoardDao {             // BoardDao 클래스 선언
         try {   // 0. 예외처리
             // String sql = "select * from board;";    // 1. SQL 작성
             // pk랑 fk만
-            String sql = "select * from board b inner join member m on b.mno = m.mno;";
+            String sql = "select * from board b inner join member m on b.mno = m.mno order by bdate desc;";     // order by bno desc도 가능    // 게시물 최신순으로 출력
 
             ps = conn.prepareStatement(sql);        // 2. SQL 기재
 
@@ -222,6 +222,54 @@ public class BoardDao {             // BoardDao 클래스 선언
             System.out.println(e);
         }
         return false;
+    }
+
+    // 12. 제목 검색 함수
+    public ArrayList<BoardDto> search(String searchTitle) {
+        ArrayList<BoardDto> list = new ArrayList<>();
+
+        try {
+            // String sql = "select * from board where btitle like '%제%';";                 // [O] : 문자일 때 작은따옴표 처리 해줬으니 가능
+            // String sql = "select * from board where btitle like '%?%';";                 // [X] : ? 파라미터가 인식 불가능
+            // String sql = "select * from board where btitle like ?;";                     // [O] : ? -> "%"+searchTitle+"%"       // 얘는 밑에 퍼센트 있는 걸로 써주고서 실행해보기
+            // String sql = "select * from board where btitle like '%"+searchTitle+"%';";   // [O] : 연결연산자        // 얘는 밑에 거 다 주석 하고서 실행해보기
+            // String sql = "select * from board where bview like %?%;";                    // [X]      // 얘는 ps.setInt(1, 3); 이거로 실행해보기
+            // String sql = "select * from board where bview like %3%;";                    // [X]
+            String sql = "select * from board b inner join member m on b.mno = m.mno where btitle like CONCAT('%', ?, '%') order by bdate desc";       // [O] SQL 제공하는 CONCAT('문자열', '문자열', '문자열') 문자열 연결 함수
+            //String sql = "select * from board where btitle like '%\\?%';";        // '' 작은따옴표 포함해서 써줘야 함. 그렇지 않으면 오류
+            // ?가 문자 처리 돼서 Parameter index out of range 오류 발생. 그래서 ? 앞에 \\를 붙여줌. 아니 이거 아닌 것 같아.
+            ps = conn.prepareStatement(sql);
+
+            // ps.setString(1, "%"+searchTitle+"%");       // 위에서 안 하고 여기서 "%"+searchTitle+"%"도 가능하긴 함.
+            // ps.setString(1, searchTitle);
+            // ps.setInt(1, 3);
+            ps.setString(1, searchTitle);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+//                String btitle = rs.getString("btitle");
+//                String bcontent = rs.getString("bcontent");
+//                String bdate = rs.getString("bdate");
+//                int bview = rs.getInt("bview");
+//                int mno = rs.getInt("mno");
+//                int bno = rs.getInt("bno");
+//
+//                // Dto 만들기
+//                BoardDto boardDto = new BoardDto(btitle, bcontent, bdate, bview, mno, bno);     // Dto 1개 만들기
+
+                BoardDto boardDto = new BoardDto(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getInt(4), rs.getInt(5), rs.getInt(6));
+                boardDto.setMid(rs.getString("mid"));
+
+                list.add(boardDto);     // 리스트에 dto 담기
+            }
+            return list;
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+
     }
 
 }   // class end
