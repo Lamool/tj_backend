@@ -12,10 +12,10 @@ import java.util.ArrayList;
 public class BoardDao {             // BoardDao 클래스 선언
     // 싱글톤
     // 1. private static 변수에 해당 클래스의 객체 생성해서 대입
-    public static BoardDao bDao = new BoardDao();
+    private static BoardDao bDao = new BoardDao();
 
     // 2. 해당 클래스의 생성자를 private 한다. 다른 클래스에서 new 사용하지 못하게 차단하기
-    BoardDao() {
+    private BoardDao() {
         try {   // DB 연동
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/day06", "root", "1234");
